@@ -17,6 +17,9 @@ font pango:Terminus 14px
 # Border
 hide_edge_borders both
 
+# New Windowns border size
+new_window 1pixel
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -33,7 +36,6 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec termite
-# bindsym $mod+Return exec termite -e 'nvim -c terminal'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -134,12 +136,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-#        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -194,7 +190,6 @@ client.urgent           #900000 #900000 #ffffff #2b2b2b
  bindsym XF86AudioStop exec playerctl pause
  bindsym XF86AudioNext exec playerctl next
  bindsym XF86AudioPrev exec playerctl previous
-
 
 # custom Bindings
 bindsym $mod+shift+x exec i3lock -d -c 606060 && systemctl suspend
@@ -251,7 +246,10 @@ bindsym $mod+Control+Shift+l move workspace to output right
 bindsym $mod+Control+Shift+h move workspace to output left
 bindsym Print exec --no-startup-id flameshot gui
 
-new_window 1pixel
 
-exec xautolock -detectsleep -time 1 -locker "i3lock -d -c 606060" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
+
+# Sleep after 10 minutes of inactivity
+exec xautolock -detectsleep -time 10 -locker "i3lock -d -c 606060" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
+
+# Execute work_screens bash file for 2 screens
 exec work-screens
