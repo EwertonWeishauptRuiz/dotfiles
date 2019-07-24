@@ -66,6 +66,9 @@
 ;; Preview Live MarkDown
 (global-set-key (kbd "C-x RET C-d") 'flymd-flyit)
 
+;; Find File by string search
+(global-set-key (kbd "<f9>") 'find-file-in-project)
+
 ;; Window Management
 ;;-----------------------:|:---------------------------
 ;; Resize Windows with Ctrl+Shift+ArrowKeys
