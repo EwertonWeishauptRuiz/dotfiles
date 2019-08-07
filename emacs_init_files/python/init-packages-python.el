@@ -17,7 +17,8 @@
 	flymd
 	;; Python Stuff
 	flycheck
-	elpy)
+	elpy
+	move-text)
 )
 
 ; activate all the packages

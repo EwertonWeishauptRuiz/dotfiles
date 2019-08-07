@@ -69,6 +69,11 @@
 ;; Find File by string search
 (global-set-key (kbd "<f9>") 'find-file-in-project)
 
+;; Transpose Lines up or down
+(global-set-key (kbd "M-n") 'move-text-down)
+(global-set-key (kbd "M-p") 'move-text-up)
+
+
 ;; Window Management
 ;;-----------------------:|:---------------------------
 ;; Resize Windows with Ctrl+Shift+ArrowKeys
