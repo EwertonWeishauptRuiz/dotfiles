@@ -73,6 +73,7 @@
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "M-p") 'move-text-up)
 
+(delete-selection-mode 1)
 
 ;; Window Management
 ;;-----------------------:|:---------------------------
