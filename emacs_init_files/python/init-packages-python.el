@@ -48,3 +48,17 @@
   (interactive)
   (insert "import pdb; pdb.set_trace()"))
 (global-set-key (kbd "C-x C-p") 'pdb-set-trace)
+
+;; Organize improts, and run black formatter
+(defun format-python-code()
+  "Organize imports and format code"
+  (interactive)
+  (progn (py-isort-buffer)
+	 (elpy-black-fix-code)
+  )
+)
+
+;; Format code using black
+(global-set-key (kbd "<f5>") 'format-python-code)
+(global-set-key (kbd "<f6>") 'py-isort-buffer)
+(global-set-key (kbd "<f7>") 'elpy-black-fix-code)

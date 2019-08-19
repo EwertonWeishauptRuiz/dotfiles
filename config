@@ -229,6 +229,7 @@ exec --no-startup-id i3-msg 'workspace $workspace1; exec gnome-terminal';
 exec --no-startup-id i3-msg 'workspace $workspace6; exec emacs & disown';
 exec --no-startup-id i3-msg 'workspace $workspace2; exec firefox & disown';
 exec --no-startup-id i3-msg 'workspace $workspace7; exec chromium & disown';
+exec --no-startup-id i3-msg 'workspace $workspace8; exec spotify & disown';
 
 
 # Assign to workspace
