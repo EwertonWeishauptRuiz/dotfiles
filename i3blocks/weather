@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+test=$(curl -Ss https://wttr.in/Copenhagen?T | cut -c 30- | head -4 | sed 's/\.-.//g' | xargs echo)
+echo $test

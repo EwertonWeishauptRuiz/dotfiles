@@ -96,6 +96,12 @@ alias l='ls -CF'
 alias slack='slack & disown'
 alias emacs='emacs & disown'
 alias work-screens=~/work_screens.sh
+alias cat="bat"
+alias find-py-tilde='find . -name "*.py~" -type f'
+alias delete-py-tilde='find . -name "*.py~" -type f -delete'
+alias clean-pyc="find . -name '*.pyc' -delete"
+alias weather-copenhagen='curl -Ss -H "Accept-Language: it" https://wttr.in/Copenhagen&lang=it'
+alias weather-sao-paulo='curl -Ss -H "Accept-Language: it" https://wttr.in/Sao_Paulo&lang=it'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

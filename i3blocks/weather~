@@ -1,0 +1,4 @@
+#!/bin/bash
+
+weather=$(curl -Ss https://wttr.in/Copenhagen | cut -c 30- | head -4 |  sed 's/\.-.//g' | xargs)
+echo "$weather" 

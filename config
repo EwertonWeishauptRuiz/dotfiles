@@ -158,20 +158,27 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # 
 bar {
-        status_command i3status
-	separator_symbol "|"
-        colors {
-            #color class       border  back.   text
-            focused_workspace  #0f5257 #578e5b #ffffff
-            active_workspace   #2b2b2b #2b2b2b #ffffff
-            inactive_workspace #2b2b2b #2b2b2b #ffffff
-            urgent_workspace   #2f343a #900000 #ffffff
-	    separator #666666
-        }
-        font pango:Hack 12
-    	position top
-	#Disalbe click
+  status_command i3blocks
+  position top
+  status_command SCRIPT_DIR=/usr/libexec/i3blocks i3blocks
+  font pango:Gugi 10
 }
+
+# bar {
+#         status_command i3status
+# 	separator_symbol "|"
+#         colors {
+#             #color class       border  back.   text
+#             focused_workspace  #0f5257 #578e5b #ffffff
+#             active_workspace   #2b2b2b #2b2b2b #ffffff
+#             inactive_workspace #2b2b2b #2b2b2b #ffffff
+#             urgent_workspace   #2f343a #900000 #ffffff
+# 	    separator #666666
+#         }
+#         font pango:Hack 12
+#     	position top
+# 	#Disalbe click
+# }
 
 
 #colors:                border  backgr. text    indicator

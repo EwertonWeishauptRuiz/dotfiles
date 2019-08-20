@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo date -d "-5 hours" "+%H:%M"
