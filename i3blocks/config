@@ -29,9 +29,15 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
+
+[wacken]
+command=python /home/ewr/sandbox/wacken.py
+interval=2
+
 # Spotify icon \uF1BC
 [spotify]
-command=/usr/share/i3blocks/spotify.py
+# command=/usr/share/i3blocks/spotify.py
+command=/home/ewr/spotify.py
 color=99FFCC
 interval=5
 
@@ -150,6 +156,9 @@ interval=30
 # interval=1
 
 
+[weeknumber]
+command=weeknumber=`date +%V`; echo "W $weeknumber"
+interval=3600
 
 [time]
 command=date '+%a %d-%m-%Y %H:%M:%S 🇩🇰'
