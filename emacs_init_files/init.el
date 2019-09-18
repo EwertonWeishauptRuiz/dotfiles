@@ -75,6 +75,12 @@
 
 (delete-selection-mode 1)
 
+;; EVIL MODE CONFIRGURATION
+;; -------------------------------------
+(global-set-key (kbd "<f11>") 'evil-mode)
+(global-set-key (kbd "<f10>") 'elpy-goto-definition)
+(global-set-key (kbd "M-o") 'open-line)
+
 ;; Window Management
 ;;-----------------------:|:---------------------------
 ;; Resize Windows with Ctrl+Shift+ArrowKeys
