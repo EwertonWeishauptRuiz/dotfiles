@@ -103,6 +103,7 @@ alias clean-pyc="find . -name '*.pyc' -delete"
 alias weather-copenhagen='curl -Ss -H "Accept-Language: it" https://wttr.in/Copenhagen&lang=it'
 alias weather-sao-paulo='curl -Ss -H "Accept-Language: it" https://wttr.in/Sao_Paulo&lang=it'
 alias caps-to-control='~/.myconfig/caps_to_control.sh' 
+alias open='boom open'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -186,3 +187,5 @@ export SCM_CHECK=true
 source "$BASH_IT"/bash_it.sh
 source '/home/ewr/wd/wd'
 
+my_bin='~/bin'
+export PATH=$PATH:$my_bin
