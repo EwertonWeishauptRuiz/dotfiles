@@ -172,14 +172,15 @@ color=#b8bb26
 
 
 [weather]
-command=curl -Ss -H "Accept-Language: it" https://wttr.in/cph?T0m | cut -c 16- | head -5 | sed 's/o: cph//g' | xargs echo
+command=curl -Ss https://wttr.in/cph?T0m | cut -c 16- | head -4 | sed 's/~cph//g' | xargs echo
+# curl -Ss -H "Accept-Language: it" https://wttr.in/cph?T0m | cut -c 16- | head -4 | sed 's/o: cph//g' | xargs echo
+
 interval=50
 color=#A4C2F4
 
 [mooncycle]
 command=curl -Ss wttr.in/Copenhagen?format=%m
 interval=3600
-
 
 # Generic media player support
 #
