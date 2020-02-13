@@ -99,9 +99,11 @@ alias work-screens=~/work_screens.sh
 alias cat="bat"
 alias find-py-tilde='find . -name "*.py~" -type f'
 alias delete-py-tilde='find . -name "*.py~" -type f -delete'
-alias clean-pyc="find . -name '*.pyc' -delete"
+alias delete-pyc="find . -name '*.pyc' -delete"
+alias clean-python-project='delete-pyc ; delete-py-tilde'
 alias weather-copenhagen='curl -Ss -H "Accept-Language: it" https://wttr.in/Copenhagen&lang=it'
 alias weather-sao-paulo='curl -Ss -H "Accept-Language: it" https://wttr.in/Sao_Paulo&lang=it'
+alias docker-go='docker start dev-django postgres ; docker attach dev-django'
 alias caps-to-control='~/.myconfig/caps_to_control.sh' 
 alias open='boom open'
 
