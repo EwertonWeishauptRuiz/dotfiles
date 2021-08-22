@@ -17,9 +17,6 @@ font pango:Terminus 14px
 # Border
 hide_edge_borders both
 
-# New Windowns border size
-new_window 1pixel
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -36,6 +33,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec termite
+# bindsym $mod+Return exec termite -e 'nvim -c terminal'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -69,9 +67,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# split in horizontal orientation or vertical 
 bindsym $mod+Control+h split h
-# split in vertical orientation
 bindsym $mod+Control+v split v
 
 # enter fullscreen mode for the focused container
@@ -93,16 +90,16 @@ bindsym $mod+Control+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-set $workspace1 "1"
-set $workspace2 "2"
+set $workspace1 "1: Term"
+set $workspace2 "2: Firefox"
 set $workspace3 "3"
-set $workspace4 "4"
+set $workspace4 "4: Steam"
 set $workspace5 "5"
-set $workspace6 "6"
-set $workspace7 "7"
-set $workspace8 "8"
+set $workspace6 "6: Emacs"
+set $workspace7 "7: Chrome"
+set $workspace8 "8: Spotify"
 set $workspace9 "9"
-set $workspace10 "10"
+set $workspace10 "10: Slack"
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2 
@@ -127,11 +124,6 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-
-bindsym $mod+Shift+F9 exec playerctl previous
-bindsym $mod+Shift+F10 exec playerctl play-pause
-bindsym $mod+Shift+F11 exec playerctl next
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -141,6 +133,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+#        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -161,28 +159,38 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# 
+#
+
+# bar {
+# 	font pango:Inconsolata 10
+# 	position top
+# 	tray_output none
+# 	status_command ~/.config/i3/bumblebee-status/bumblebee-status -m  date time amixer bluetooth disk layout memory sensors  -p root.path=/ time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t greyish-powerline
+# }
 bar {
   status_command i3blocks
   position top
-  status_command SCRIPT_DIR=/usr/libexec/i3blocks i3blocks
+  # status_command ~/.myconfig/dotfiles/i3blocks i3blocks
   font pango:Gugi 10
 }
 
 # bar {
+# 	position top
 #         status_command i3status
-# 	separator_symbol "|"
-#         colors {
-#             #color class       border  back.   text
-#             focused_workspace  #0f5257 #578e5b #ffffff
-#             active_workspace   #2b2b2b #2b2b2b #ffffff
-#             inactive_workspace #2b2b2b #2b2b2b #ffffff
-#             urgent_workspace   #2f343a #900000 #ffffff
-# 	    separator #666666
-#         }
+# 	# separator_symbol "|"
+#         # colors {
+#         #     #color class       border  back.   text
+#         #     focused_workspace  #0f5257 #578e5b #ffffff
+#         #     active_workspace   #2b2b2b #2b2b2b #ffffff
+#         #     inactive_workspace #2b2b2b #2b2b2b #ffffff
+#         #     urgent_workspace   #2f343a #900000 #ffffff
+# 	#     separator #666666
+#         # }
 #         font pango:Hack 12
-#     	position top
 # 	#Disalbe click
+# }
+# bar {
+#   status_command i3blocks
 # }
 
 
@@ -197,14 +205,14 @@ client.urgent           #900000 #900000 #ffffff #2b2b2b
  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# # Media player controls (REQUIRES PLAYERCTL)
+# # Media player controls
  bindsym XF86AudioPlay exec playerctl play
- bindsym XF86AudioStop exec playerctl pause
+ bindsym XF86AudioPause exec playerctl pause
  bindsym XF86AudioNext exec playerctl next
  bindsym XF86AudioPrev exec playerctl previous
 
 # custom Bindings
-bindsym $mod+shift+x exec i3lock -d -c 606060 && systemctl suspend
+bindsym $mod+shift+x exec i3lock
 
 #Keyboard settings
 bindsym $mod+Control+Shift+i mode $keyboardMode
@@ -226,44 +234,42 @@ bindsym c exec chromium
 bindsym s exec spotify
 bindsym e exec emacs
 bindsym l exec slack
+bindsym g exec steam
 
 bindsym Escape mode "default"
 bindsym Return mode "default"
 }
 # Press Ctrl+Alt+Shift+o followed by the key to the program.
 # Exit or Return to quit Mode Launcher
-set $mode_launcher Launch: [e]macs, [f]irefox, [s]potify, s[l]ack, [c]hromium
+set $mode_launcher Launch: [e]macs, [f]irefox, [s]potify, s[l]ack, [c]hromium, [g]Steam
 bindsym $mod+Control+Shift+o mode "$mode_launcher"
 
 # On Startup execute, and assign 
-exec --no-startup-id i3-msg 'workspace $workspace10; exec /usr/bin/slack & disown';
-exec --no-startup-id i3-msg 'workspace $workspace1; exec gnome-terminal';
-exec --no-startup-id i3-msg 'workspace $workspace6; exec emacs & disown';
-exec --no-startup-id i3-msg 'workspace $workspace2; exec firefox & disown';
-exec --no-startup-id i3-msg 'workspace $workspace7; exec chromium & disown';
+exec --no-startup-id i3-msg 'workspace $workspace1; exec termite';
+exec --no-startup-id i3-msg 'workspace $workspace4; exec steam';
+exec --no-startup-id i3-msg 'workspace $workspace1; exec firefox';
 exec --no-startup-id i3-msg 'workspace $workspace8; exec spotify & disown';
-
+exec --no-startup-id i3-msg 'workspace $workspace2; exec firefox & disown';
+exec --no-startup-id i3-msg 'workspace $workspace2; exec sudo emacs & disown';
 
 # Assign to workspace
 assign [class="Firefox"] $workspace2
 assign [class="Emacs"] $workspace6
 assign [class="Chromium"] $workspace7
 # Another known issue is with Spotify, which doesn’t set the class hints when mapping the window, meaning you’ll have to use a for_window rule to assign Spotify to a specific workspace
-for_window [class="Spotify"] move to workspace $workspace8
+for_window [class="Spotify"] move container to workspace $workspace8
 assign [class="Slack"] $workspace10
+for_window [class="^Steam$" title=".* - Chat"] $workspace5
+assign [class="Steam"] $workspace4
+assign [class="RocketLeague"] $workspace3
+for_window [class="discord"] $workspace9
+# Print screen with flameshot
+bindsym Print exec "flameshot gui"
+exec caps-to-control
 
 # Automatically put workspaces on specific Screens
-workspace 1 output primary
+# workspace 1 output primary
 
 # move focused workspace between monitors
-bindsym $mod+Control+Shift+l move workspace to output right
-bindsym $mod+Control+Shift+h move workspace to output left
-bindsym Print exec --no-startup-id flameshot gui
-
-
-
-# Sleep after 10 minutes of inactivity
-exec xautolock -detectsleep -time 10 -locker "i3lock -d -c 606060" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
-
-# Execute work_screens bash file for 2 screens
-exec work-screens
+# bindsym $mod+Control+Shift+l move workspace to output right
+# bindsym $mod+Control+Shift+h move workspace to output left
