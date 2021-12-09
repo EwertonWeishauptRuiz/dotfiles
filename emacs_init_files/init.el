@@ -106,6 +106,8 @@
 
 (elpy-enable)
 (add-hook 'python-mode-hook 'elpy-mode 'multiple-cursors-mode)
+(global-display-fill-column-indicator-mode)
+(setq-default display-fill-column-indicator-column 79)
 
 ;; Go to error PEP8
 (global-set-key (kbd "C-,") 'flycheck-previous-error)
