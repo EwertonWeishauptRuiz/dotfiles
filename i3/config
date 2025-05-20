@@ -32,7 +32,7 @@ hide_edge_borders both
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 # bindsym $mod+Return exec termite -e 'nvim -c terminal'
 
 # kill focused window
@@ -91,11 +91,11 @@ bindsym $mod+Control+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 set $workspace1 "1: Term"
-set $workspace2 "2: Firefox"
+set $workspace2 "2: Brave"
 set $workspace3 "3"
 set $workspace4 "4: Steam"
 set $workspace5 "5"
-set $workspace6 "6: Emacs"
+set $workspace6 "6: Code"
 set $workspace7 "7: Chrome"
 set $workspace8 "8: Spotify"
 set $workspace9 "9"
@@ -212,7 +212,7 @@ client.urgent           #900000 #900000 #ffffff #2b2b2b
  bindsym XF86AudioPrev exec playerctl previous
 
 # custom Bindings
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+x exec i3lock --color=000000
 
 #Keyboard settings
 bindsym $mod+Control+Shift+i mode $keyboardMode
@@ -245,16 +245,15 @@ set $mode_launcher Launch: [e]macs, [f]irefox, [s]potify, s[l]ack, [c]hromium, [
 bindsym $mod+Control+Shift+o mode "$mode_launcher"
 
 # On Startup execute, and assign 
-exec --no-startup-id i3-msg 'workspace $workspace1; exec termite';
-exec --no-startup-id i3-msg 'workspace $workspace4; exec steam';
-exec --no-startup-id i3-msg 'workspace $workspace1; exec firefox';
-exec --no-startup-id i3-msg 'workspace $workspace8; exec spotify & disown';
-exec --no-startup-id i3-msg 'workspace $workspace2; exec firefox & disown';
-exec --no-startup-id i3-msg 'workspace $workspace2; exec sudo emacs & disown';
+exec --no-startup-id i3-msg 'workspace $workspace1; exec alacritty';
+exec --no-startup-id i3-msg 'workspace $workspace2; exec brave & disown';
+exec --no-startup-id i3-msg 'workspace $workspace6; exec sudo code & disown';
+exec --no-startup-id i3-msg 'workspace $workspace8; exec spotify-launcher & disown  
+#exec --no-startup-id i3-msg 'workspace $workspace10; exec slack & disown';
 
 # Assign to workspace
-assign [class="Firefox"] $workspace2
-assign [class="Emacs"] $workspace6
+assign [class="Brave"] $workspace2
+assign [class="Code"] $workspace6
 assign [class="Chromium"] $workspace7
 # Another known issue is with Spotify, which doesn’t set the class hints when mapping the window, meaning you’ll have to use a for_window rule to assign Spotify to a specific workspace
 for_window [class="Spotify"] move container to workspace $workspace8
