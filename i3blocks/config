@@ -25,30 +25,30 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
-command=/usr/share/i3blocks/$BLOCK_NAME
+command=/home/ewr/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[wacken]
-command=python /usr/share/i3blocks/wacken.py
-interval=2
+#[wacken]
+#command=python /home/ewr/.config/i3blocks/wacken.py
+#interval=2
 
 # Spotify icon \uF1BC
 [spotify]
-command=/usr/share/i3blocks/spotify.py
+command=/home/ewr/.config/i3blocks/spotify.py
 color=99FFCC
 interval=5
 
 [docker]
-command=/usr/share/i3blocks/docker
+command=/home/ewr/.config/i3blocks/docker
 color=#0db7ed
 interval=10
-label=🐳 
+label=🐳
 
 [key_layout]
 command=setxkbmap -query | grep layout | cut -c 13-
-# command=/usr/share/i3blocks/key_layout
-label=⌨️ 
+# command=/home/ewr/.config/i3blocks/key_layout
+label=⌨️
 interval=5
 color=#ebdbb2
 
@@ -61,7 +61,7 @@ color=#b16286
 
 # Memory usage
 [memory]
-label=MEM 
+label=MEM
 separator=true
 interval=30
 color=#689d6a
@@ -72,7 +72,7 @@ color=#689d6a
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=💾 
+label=💾
 # DIR=/mnt/data
 interval=30
 separator=true
@@ -83,15 +83,21 @@ color=#438588
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=💽 
+label=💽
 interval=10
 min_width=100.00%
 color=#fe8019
 
 [load_average]
-label=LOAD 
+label=LOAD
 interval=10
 color=#d3869b
+
+[battery]
+command=/home/ewr/.config/i3blocks/battery.sh
+interval=30
+label=⚡
+
 
 [weeknumber]
 command=weeknumber=`date +%V`; echo "W $weeknumber"
@@ -104,8 +110,8 @@ color=#fb4934
 
 
 [brazil-date-time]
-command=/usr/share/i3blocks/br-datetime.sh
-interval=3600
+command=/home/ewr/.config/i3blocks/br-datetime.sh
+interval=60
 color=#b8bb26
 
 
